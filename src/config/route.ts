@@ -6,6 +6,7 @@ import UserInfoPage from "../pages/user/UserInfoPage.vue";
 import SearchPage from "../pages/SearchPage.vue";
 import UserSettingPage from "../pages/user/UserSettingPage.vue";
 import UserRegisterPage from "../pages/user/UserRegisterPage.vue";
+import UserLoginPage from "../pages/user/UserLoginPage.vue";
 
 // 定义一些路由
 const routes = [
@@ -14,6 +15,7 @@ const routes = [
   { path: '/cart', component: CartPage },
   { path: '/user', component: UserPage },
   { path: '/user/register', component: UserRegisterPage },
+  { path: '/user/login', component: UserLoginPage },
   { path: '/user/info', component: UserInfoPage },
   { path: '/user/setting', component: UserSettingPage },
   { path: '/search', component: SearchPage },

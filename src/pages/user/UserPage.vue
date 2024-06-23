@@ -9,10 +9,10 @@
       width="3rem"
       height="3rem"
       style="margin: 10px 0 0 20px"
-      src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg"
+      :src="user?.face"
       @click="onImageClick"
   />
-  <div class="userRegister" style="display: inline-block; vertical-align: top; margin: 20px 0 0 10px">
+  <div v-if="!user" class="userRegister" style="display: inline-block; vertical-align: top; margin: 20px 0 0 10px">
     <div style="display: inline-block" @click="onLoginClick">登录</div>&nbsp;
     <div style="display: inline-block" @click="onRegisterClick">免费注册</div>
   </div>
@@ -20,8 +20,16 @@
 
 <script setup lang="ts">
 import {useRouter} from "vue-router";
+import {ref, onMounted} from "vue";
+import {getCurrentUser} from "../../services/user.ts";
 
 const router = useRouter();
+
+const user = ref();
+
+onMounted(async () => {
+  user.value = await getCurrentUser();
+})
 
 const onIconClick = () => {
   router.push('/user/setting');
@@ -32,6 +40,10 @@ const onImageClick = () => {
 
 const onRegisterClick = () => {
   router.push('/user/register');
+}
+
+const onLoginClick = () => {
+  router.push('/user/login');
 }
 </script>
 
